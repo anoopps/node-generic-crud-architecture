@@ -75,7 +75,7 @@ export const list = async (Model: Model<any>, req: Request, res: Response) => {
 export const updateOne = async (
   Model: Model<any>,
   req: Request,
-  res: Response  
+  res: Response
 ) => {
   try {
     console.log("Updating .................");
@@ -114,7 +114,7 @@ export const deleteOne = async (
 
 
   try {
- 
+
     const { id } = req.params;
     //find record
     const deleted = await Model.findByIdAndDelete(id);

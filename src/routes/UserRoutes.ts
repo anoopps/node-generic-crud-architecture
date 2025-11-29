@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserValidator, updateUserValidation} from "../validators/userValidator";
+import { createUserValidator, updateUserValidation } from "../validators/userValidator";
 import "../models/User";
 const router = Router();
 
@@ -13,7 +13,7 @@ import { validate } from "../midlewares/errorHandler";
 
 
 // crud endpoints of user
-router.post("/users", createUserValidator,validate, userController.create);
+router.post("/users", createUserValidator, validate, userController.create);
 router.get("/users", userController.list);
 router.get("/users/search", userController.search);
 router.get("/users/:id", userController.read);
