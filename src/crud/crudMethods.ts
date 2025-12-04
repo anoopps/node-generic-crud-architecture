@@ -7,6 +7,7 @@ export const create = async (
   res: Response
 ) => {
   try {
+
     const doc = await Model.create(req.body);
     return res.status(200).json({
       success: true,
@@ -78,7 +79,6 @@ export const updateOne = async (
   res: Response
 ) => {
   try {
-    console.log("Updating .................");
     const id = req.params.id;
 
     // find by id and update

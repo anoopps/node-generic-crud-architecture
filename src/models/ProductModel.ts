@@ -3,9 +3,9 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IProduct extends Document {
   title: string;
   price: number;
-  description: string;
+  description: string; 
   userId: Schema.Types.ObjectId;
-}
+} 
 
 const ProductSchema = new Schema<IProduct>(
   {

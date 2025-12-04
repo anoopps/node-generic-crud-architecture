@@ -1,17 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-export interface AuthPayload {
+export interface AuthPayload{
   userId: string;
   email: string;
   iat: number;
   exp: number;
+  
 }
 
 declare global {
   namespace Express {
     interface Request {
       user?: AuthPayload;
+      token?: string;
     }
   }
 }
@@ -34,10 +36,13 @@ const AuthenticateToken = async (
         ? authHeader.split(" ")[1]
         : authHeader;
 
-    const decodedUser = jwt.verify(token, process.env.JWT_SECRET as string) as AuthPayload;
+    // save token in request    
+    req.token = token;
+
+    const decodedUser = jwt.verify(token, process.env.JWT_SECRET as string) as AuthPayload;        
     req.user = decodedUser;
     next();
-
+    
   } catch (error: any) {
     res.status(400).json({
       success: false,
