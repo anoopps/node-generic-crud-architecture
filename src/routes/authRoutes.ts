@@ -7,6 +7,8 @@ import CheckBlacklist from "../midlewares/CheckBlacklist";
 
 //login
 router.post("/login", userController.login);
-router.post("/logout", AuthenticateToken, CheckBlacklist, userController.logout);
+router.post("/logout", CheckBlacklist, AuthenticateToken, userController.logout);
+router.post("/refresh", userController.refresh);
+
 
 export default router;

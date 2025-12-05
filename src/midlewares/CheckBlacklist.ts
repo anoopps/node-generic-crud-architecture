@@ -2,10 +2,14 @@
 import { Request, Response, NextFunction } from "express";
 import redis from "../config/redis";
 
-const CheckBlacklist = async (req: Request, res: Response, next: NextFunction) => {
-  try {    
+const CheckBlacklist = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
     const token = req.token;
-    
+
     if (!token) {
       return res.status(401).json({ success: false, message: "Token missing" });
     }

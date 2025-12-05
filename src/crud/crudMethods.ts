@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Model } from "mongoose";
+import { Model } from "mongoose"; 
 
 export const create = async (
   Model: Model<any>,
@@ -7,7 +7,7 @@ export const create = async (
   res: Response
 ) => {
   try {
-
+    console.log(req.body);
     const doc = await Model.create(req.body);
     return res.status(200).json({
       success: true,
@@ -76,7 +76,7 @@ export const list = async (Model: Model<any>, req: Request, res: Response) => {
 export const updateOne = async (
   Model: Model<any>,
   req: Request,
-  res: Response
+  res: Response  
 ) => {
   try {
     const id = req.params.id;
@@ -114,7 +114,7 @@ export const deleteOne = async (
 
 
   try {
-
+ 
     const { id } = req.params;
     //find record
     const deleted = await Model.findByIdAndDelete(id);
